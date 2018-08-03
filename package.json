@@ -1,0 +1,37 @@
+{
+  "name": "quick-switch-extension",
+  "description": "",
+  "version": "0.4.0",
+  "author": "Ian Bicking (http://ianbicking.org)",
+  "bugs": {
+    "url": "https://github.com/ianb/quick-switch-extension/issues"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^4.16.0",
+    "eslint-plugin-mozilla": "^0.6.0",
+    "eslint-plugin-no-unsanitized": "^2.0.2",
+    "mustache": "^2.3.0",
+    "npm-run-all": "^4.1.2",
+    "web-ext": "^2.4.0"
+  },
+  "homepage": "https://github.com/ianb/quick-switch-extension/",
+  "license": "MPL-2.0",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ianb/quick-switch-extension.git"
+  },
+  "scripts": {
+    "start": "npm-run-all build run",
+    "lint": "npm-run-all lint:*",
+    "lint:addon": "npm run package && web-ext lint -s addon",
+    "lint:js": "eslint .",
+    "build": "npm-run-all build:*",
+    "build:manifest": "node -e 'let input = JSON.parse(fs.readFileSync(\"package.json\")); input.version = input.version.slice(0, -1) + Math.floor((Date.now() - new Date(new Date().getFullYear().toString()).getTime()) / 3600000); console.log(JSON.stringify(input))' | mustache - addon/manifest.json.tmpl > addon/manifest.json",
+    "build:web-ext": "web-ext build --source-dir=addon --overwrite-dest --ignore-files '*.tmpl'",
+    "package": "npm run build && cp web-ext-artifacts/`ls -t1 web-ext-artifacts | head -n 1` addon.xpi",
+    "run": "mkdir -p ./Profile && web-ext run --source-dir=addon -p ./Profile --browser-console --keep-profile-changes -f nightly",
+    "test": "npm run lint"
+  }
+}

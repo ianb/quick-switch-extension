@@ -1,0 +1,5 @@
+/Profile
+/node_modules
+/web-ext-artifacts
+/addon.xpi
+/addon/manifest.json

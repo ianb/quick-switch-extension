@@ -1,0 +1,104 @@
+{
+  "manifest_version": 2,
+  "name": "Quick Switch",
+  "version": "{{version}}",
+  "description": "Quickly switch to and from pinned tabs",
+  "icons": {
+    "48": "generic-fox.png"
+  },
+  "author": "{{{author}}}",
+  "homepage_url": "{{{homepage}}}",
+  "applications": {
+    "gecko": {
+      "id": "quick-switch@ianbicking.org",
+      "strict_min_version": "57.0a1"
+    }
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "browser_action": {
+    "default_icon": "generic-fox.png",
+    "default_popup": "popup.html",
+    "default_title": "Something Something",
+    "browser_style": true
+  },
+  "commands": {
+    "switch-1": {
+      "suggested_key": {
+        "default": "Ctrl+1"
+      },
+      "description": "Switch to or from the first tab"
+    },
+    "switch-2": {
+      "suggested_key": {
+        "default": "Ctrl+2"
+      },
+      "description": "Switch to or from the second tab"
+    },
+    "switch-3": {
+      "suggested_key": {
+        "default": "Ctrl+3"
+      },
+      "description": "Switch to or from the third tab"
+    },
+    "switch-4": {
+      "suggested_key": {
+        "default": "Ctrl+4"
+      },
+      "description": "Switch to or from the fourth tab"
+    },
+    "switch-5": {
+      "suggested_key": {
+        "default": "Ctrl+5"
+      },
+      "description": "Switch to or from the fifth tab"
+    },
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+Alt+1"
+      }
+    },
+    "show-1": {
+      "suggested_key": {
+        "default": "Ctrl+Alt+X"
+      },
+      "description": "Show the first tab"
+    },
+    "show-2": {
+      "suggested_key": {
+        "default": "Ctrl+Alt+2"
+      },
+      "description": "Show the second tab"
+    },
+    "show-3": {
+      "suggested_key": {
+        "default": "Ctrl+Alt+3"
+      },
+      "description": "Show the third tab"
+    },
+    "show-4": {
+      "suggested_key": {
+        "default": "Ctrl+Alt+4"
+      },
+      "description": "Show the fourth tab"
+    },
+    "show-5": {
+      "suggested_key": {
+        "default": "Ctrl+Alt+5"
+      },
+      "description": "Show the fifth tab"
+    }
+  },
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "<all_urls>",
+    "storage",
+    "contextMenus",
+    "bookmarks",
+    "management"
+  ]
+}
